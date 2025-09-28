@@ -11,6 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service implementation for managing user-related operations.
+ */
 @Service
 @AllArgsConstructor
 public class UserService implements IUserService {

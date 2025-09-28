@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller for handling user login requests.
+ */
 @RestController
 @RequestMapping("/api/v1/auth/login")
 @AllArgsConstructor
@@ -23,8 +26,10 @@ public class LoginController {
     /**
      * Handles user login requests.
      *
-     * @param loginRequestDto the login request data transfer object containing user credentials
-     * @return a ResponseEntity containing the TokenResponseDto with the generated JWT token
+     * @param loginRequestDto the login request
+     * containing user credentials
+     * @return a ResponseEntity containing the TokenResponseDto
+     * with the generated JWT token
      */
     @PostMapping()
     public ResponseEntity<TokenResponseDto> login(@Valid @RequestBody LoginRequestDto loginRequestDto) {

@@ -14,7 +14,8 @@ public interface UserCredentialsRepository extends JpaRepository<UserCredentials
      * Finds user credentials by username if the user is enabled.
      *
      * @param userName the username to search for
-     * @return an Optional containing the UserCredentials if found and enabled, otherwise empty
+     * @return an Optional containing the UserCredentials
+     * if found and enabled, otherwise empty
      */
     Optional<UserCredentials> findUserCredentialsByUsernameAndEnabledIsTrue(String userName);
 

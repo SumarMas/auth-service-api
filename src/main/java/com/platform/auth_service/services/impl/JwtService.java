@@ -13,8 +13,11 @@ import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.time.Instant;
 import java.util.Date;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Map;
 
+/**
+ * Service for generating JWT tokens.
+ */
 @Service
 public class JwtService implements IJwtService {
     /**
@@ -40,16 +43,18 @@ public class JwtService implements IJwtService {
      * Generates a JWT token with the provided claims and user ID.
      *
      * @param userId the unique identifier of the user
-     * @param claims a ConcurrentHashMap containing the claims to be included in the token
-     * @return a TokenResponseDto containing the generated JWT token and its expiration details
+     * @param claims a ConcurrentHashMap containing
+     *               the claims to be included in the token
+     * @return a TokenResponseDto containing
+     * the generated JWT token and its expiration details
      */
     @Override
-    public TokenResponseDto generateToken(final String userId, final ConcurrentHashMap<String, String> claims) {
+    public TokenResponseDto generateToken(final String userId, final Map<String, String> claims) {
         String token = generateStringToken(userId, claims);
         return new TokenResponseDto(token, jwtConfig.getExpirationSeconds());
     }
 
-    private String generateStringToken(final String userId, final ConcurrentHashMap<String, String> claims) {
+    private String generateStringToken(final String userId, final Map<String, String> claims) {
         Instant now = Instant.now();
         JwtBuilder builder = Jwts.builder()
                 .setSubject(userId)

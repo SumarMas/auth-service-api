@@ -17,9 +17,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ *
+ */
 @Service
 @AllArgsConstructor
 public class LoginService implements ILoginService {
@@ -38,9 +42,11 @@ public class LoginService implements ILoginService {
     /**
      * Authenticates a user and generates a JWT token upon successful login.
      *
-     * @param loginRequestDto the login request data transfer object containing user credentials
+     * @param loginRequestDto the login request
+     *                        data transfer object containing user credentials
      * @return a TokenResponseDto containing the generated JWT token
-     * @throws CustomException if authentication fails or an error occurs during the process
+     * @throws CustomException if authentication
+     * fails or an error occurs during the process
      */
     @Override
     public TokenResponseDto login(LoginRequestDto loginRequestDto) {
@@ -80,12 +86,12 @@ public class LoginService implements ILoginService {
     }
 
     private TokenResponseDto generateToken(UserDto userDto) {
-        ConcurrentHashMap<String, String> claims = buildClaims(userDto);
+        Map<String, String> claims = buildClaims(userDto);
         return jwtService.generateToken(userDto.getUserId().toString(), claims);
     }
 
-    private ConcurrentHashMap<String, String> buildClaims(UserDto userDto) {
-        ConcurrentHashMap<String, String> claims = new ConcurrentHashMap<>();
+    private Map<String, String> buildClaims(UserDto userDto) {
+        Map<String, String> claims = new ConcurrentHashMap<>();
         claims.put("userId", userDto.getUserId().toString());
         claims.put("roles", userDto.getRoles().toString());
         return claims;

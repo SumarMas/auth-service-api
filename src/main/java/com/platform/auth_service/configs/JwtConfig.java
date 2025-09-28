@@ -4,6 +4,9 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+/**
+ * Configuration properties for JWT (JSON Web Token) settings.
+ */
 @Component
 @ConfigurationProperties(prefix = "security.jwt")
 @Data

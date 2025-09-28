@@ -12,7 +12,8 @@ public interface ILoginService {
     /**
      * Authenticates a user and generates a JWT token upon successful login.
      *
-     * @param loginRequestDto the login request data transfer object containing user credentials
+     * @param loginRequestDto the login request
+     *                        data transfer object containing user credentials
      * @return a TokenResponseDto containing the generated JWT token
      */
     TokenResponseDto login(LoginRequestDto loginRequestDto);

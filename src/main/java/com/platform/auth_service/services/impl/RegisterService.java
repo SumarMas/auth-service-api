@@ -16,8 +16,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * Service implementation for user registration.
+ * Handles the registration process,
+ * including saving user credentials and generating JWT tokens.
+ */
 @Service
 @AllArgsConstructor
 public class RegisterService implements IRegisterService {
@@ -33,9 +40,11 @@ public class RegisterService implements IRegisterService {
     /**
      * Registers a new user and generates a JWT token upon successful registration.
      *
-     * @param registerRequestDto the registration request data transfer object containing user details
+     * @param registerRequestDto the registration request
+     *                           data transfer object containing user details
      * @return a TokenResponseDto containing the generated JWT token
-     * @throws CustomException if registration fails or an error occurs during the process
+     * @throws CustomException if registration fails
+     * or an error occurs during the process
      */
     @Override
     @Transactional
@@ -88,8 +97,8 @@ public class RegisterService implements IRegisterService {
     }
 
     private TokenResponseDto getToken(String userId, String defaultRole) {
-        return jwtService.generateToken(userId, new java.util.concurrent.ConcurrentHashMap<>() {{
-            put("role", defaultRole);
-        }});
+        Map<String, String> claims = new ConcurrentHashMap<>();
+        claims.put("role", defaultRole);
+        return jwtService.generateToken(userId, claims);
     }
 }

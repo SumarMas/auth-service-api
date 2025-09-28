@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
+/**
+ * Implementation of IUserRestClient for interacting with the user service API.
+ */
 @Service
 public class UserRestClient implements IUserRestClient {
 
@@ -20,7 +22,8 @@ public class UserRestClient implements IUserRestClient {
      * Constructs a UserRestClient with the specified RestTemplate and root URL.
      *
      * @param restTemplateParam the RestTemplate instance for making HTTP requests
-     * @param rootUrlParam      the base URL for the user service, injected from application properties
+     * @param rootUrlParam      the base URL for the user service,
+     *                          injected from application properties
      */
     public UserRestClient(RestTemplate restTemplateParam, @Value("${pool.user.url}") String rootUrlParam) {
         this.rootUrl = rootUrlParam;

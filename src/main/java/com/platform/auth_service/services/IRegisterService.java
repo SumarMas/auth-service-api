@@ -13,7 +13,8 @@ public interface IRegisterService {
      * Registers a new user based on the provided registration details.
      *
      * @param registerRequestDto The DTO containing user registration details.
-     * @return A TokenResponseDto containing the generated JWT token upon successful registration.
+     * @return A TokenResponseDto containing the
+     * generated JWT token upon successful registration.
      */
     TokenResponseDto register(RegisterRequestDto registerRequestDto);
 }
