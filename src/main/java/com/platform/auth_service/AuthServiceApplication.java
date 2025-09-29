@@ -8,7 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class AuthServiceApplication {
-    /** The main entry point of the AuthServiceApplication.
+    /**
+     * The main entry point of the AuthServiceApplication.
      *
      * @param args command-line arguments (not used)
      */

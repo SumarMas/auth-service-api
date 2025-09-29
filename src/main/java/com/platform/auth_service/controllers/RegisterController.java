@@ -18,14 +18,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/auth/register")
 @RequiredArgsConstructor
 public class RegisterController {
-    /** Service for handling user registration operations. */
+    /**
+     * Service for handling user registration operations.
+     */
     private final IRegisterService registerService;
 
     /**
      * Handles user registration requests.
      *
      * @param registerRequestDto the registration request
-     * data transfer object containing user details
+     *                           data transfer object containing user details
      * @return a ResponseEntity containing the
      * TokenResponseDto with the generated JWT token
      */

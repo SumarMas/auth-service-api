@@ -28,15 +28,25 @@ import java.util.concurrent.ConcurrentHashMap;
 @AllArgsConstructor
 public class LoginService implements ILoginService {
 
-    /** Logger for logging information and errors. */
+    /**
+     * Logger for logging information and errors.
+     */
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginService.class);
-    /** Service for handling JWT operations. */
+    /**
+     * Service for handling JWT operations.
+     */
     private final IJwtService jwtService;
-    /** Service for managing user-related operations. */
+    /**
+     * Service for managing user-related operations.
+     */
     private final IUserService userService;
-    /** Repository for accessing user credentials data. */
+    /**
+     * Repository for accessing user credentials data.
+     */
     private final UserCredentialsRepository userCredentialsRepository;
-    /** Password encoder for validating user passwords. */
+    /**
+     * Password encoder for validating user passwords.
+     */
     private final PasswordEncoder passwordEncoder;
 
     /**
@@ -46,7 +56,7 @@ public class LoginService implements ILoginService {
      *                        data transfer object containing user credentials
      * @return a TokenResponseDto containing the generated JWT token
      * @throws CustomException if authentication
-     * fails or an error occurs during the process
+     *                         fails or an error occurs during the process
      */
     @Override
     public TokenResponseDto login(LoginRequestDto loginRequestDto) {

@@ -28,13 +28,21 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 @AllArgsConstructor
 public class RegisterService implements IRegisterService {
-    /** Logger for logging information and errors. */
+    /**
+     * Logger for logging information and errors.
+     */
     private static final Logger LOGGER = LoggerFactory.getLogger(RegisterService.class);
-    /** Repository for accessing user credentials data. */
+    /**
+     * Repository for accessing user credentials data.
+     */
     private final UserCredentialsRepository userCredentialsRepository;
-    /** Password encoder for encoding user passwords. */
+    /**
+     * Password encoder for encoding user passwords.
+     */
     private final PasswordEncoder passwordEncoder;
-    /** Service for handling JWT operations. */
+    /**
+     * Service for handling JWT operations.
+     */
     private final IJwtService jwtService;
 
     /**
@@ -44,7 +52,7 @@ public class RegisterService implements IRegisterService {
      *                           data transfer object containing user details
      * @return a TokenResponseDto containing the generated JWT token
      * @throws CustomException if registration fails
-     * or an error occurs during the process
+     *                         or an error occurs during the process
      */
     @Override
     @Transactional

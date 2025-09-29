@@ -17,9 +17,13 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class UserService implements IUserService {
-    /** Logger instance for logging information and errors. */
+    /**
+     * Logger instance for logging information and errors.
+     */
     private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
-    /** REST client for interacting with the user service. */
+    /**
+     * REST client for interacting with the user service.
+     */
     private final IUserRestClient userRestClient;
 
     /**

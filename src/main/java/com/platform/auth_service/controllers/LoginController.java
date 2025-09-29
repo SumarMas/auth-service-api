@@ -27,7 +27,7 @@ public class LoginController {
      * Handles user login requests.
      *
      * @param loginRequestDto the login request
-     * containing user credentials
+     *                        containing user credentials
      * @return a ResponseEntity containing the TokenResponseDto
      * with the generated JWT token
      */
