@@ -28,7 +28,8 @@ public class SecurityConfig {
     @SuppressWarnings("PMD.SignatureDeclareThrowsException")
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf(AbstractHttpConfigurer::disable)
+                // Disable CSRF for auth endpoints
+                .csrf(csrf -> csrf.ignoringRequestMatchers("/api/v1/auth/**"))
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/api/v1/auth/register", "/api/v1/auth/login").permitAll()
