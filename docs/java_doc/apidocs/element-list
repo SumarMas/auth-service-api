@@ -1,0 +1,13 @@
+com.platform.auth_service
+com.platform.auth_service.configs
+com.platform.auth_service.controllers
+com.platform.auth_service.controllers.manageExceptions
+com.platform.auth_service.dtos.common
+com.platform.auth_service.dtos.request
+com.platform.auth_service.dtos.response
+com.platform.auth_service.entities
+com.platform.auth_service.repositories
+com.platform.auth_service.restClients
+com.platform.auth_service.restClients.impl
+com.platform.auth_service.services
+com.platform.auth_service.services.impl
