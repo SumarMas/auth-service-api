@@ -43,17 +43,26 @@ public class UserRestClient implements IUserRestClient {
     private final String rootUrl;
 
     /**
+     * Application name for internal request header.
+     */
+    private final String applicationName;
+
+    /**
      * Constructs a UserRestClient with the specified RestTemplate and root URL.
      *
      * @param restTemplateParam the RestTemplate instance for making HTTP requests
      * @param rootUrlParam      the base URL for the user service,
      *                          injected from application properties
+     * @param applicationNameParam the application name,
+     *                             injected from application properties
      * @param objectMapperParam the ObjectMapper instance for JSON processing
      */
     public UserRestClient(RestTemplate restTemplateParam,
                           @Value("${pool.user.url}") String rootUrlParam,
+                          @Value("${spring.application.name}") String applicationNameParam,
                           ObjectMapper objectMapperParam) {
         this.rootUrl = rootUrlParam;
+        this.applicationName = applicationNameParam;
         this.restTemplate = restTemplateParam;
         this.objectMapper = objectMapperParam;
     }
@@ -70,6 +79,7 @@ public class UserRestClient implements IUserRestClient {
         try {
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.add("X-Internal-Request", applicationName);
             HttpEntity<UserDto> requestEntity = new HttpEntity<>(null, headers);
             LOG.trace("Sending GET request to URL: {}", getUrl);
             return restTemplate.exchange(

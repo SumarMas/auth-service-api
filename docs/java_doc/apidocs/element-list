@@ -1,5 +1,6 @@
 com.platform.auth_service
 com.platform.auth_service.configs
+com.platform.auth_service.context
 com.platform.auth_service.controllers
 com.platform.auth_service.controllers.manageExceptions
 com.platform.auth_service.dtos.common

@@ -71,7 +71,7 @@ public class RegisterService implements IRegisterService {
             LOGGER.error("Database error while saving user credentials: {}", ex.getMessage());
             throw new CustomException("Error saving user credentials", HttpStatus.INTERNAL_SERVER_ERROR, ex);
         }
-        return getToken(registerRequestDto.getUsername(), registerRequestDto.getDefaultRole());
+        return getToken(registerRequestDto.getUserId().toString(), registerRequestDto.getDefaultRole());
     }
 
     private boolean existsByUsername(String username) {
@@ -84,14 +84,14 @@ public class RegisterService implements IRegisterService {
     }
 
     private UserCredentials buildUserCredentials(RegisterRequestDto registerRequestDto) {
+        final UUID userId = registerRequestDto.getUserId();
         return UserCredentials.builder()
                 .id(UUID.randomUUID())
-                .userId(registerRequestDto.getUserId())
+                .userId(userId)
+                .createdUser(userId)
+                .lastUpdatedUser(userId)
                 .username(registerRequestDto.getUsername())
                 .passwordHash(encodePassword(registerRequestDto.getPassword()))
-                .enabled(true)
-                .createdUser(registerRequestDto.getUserId())
-                .lastUpdatedUser(registerRequestDto.getUserId())
                 .build();
     }
 
@@ -106,7 +106,8 @@ public class RegisterService implements IRegisterService {
 
     private TokenResponseDto getToken(String userId, String defaultRole) {
         Map<String, String> claims = new ConcurrentHashMap<>();
-        claims.put("role", defaultRole);
+        claims.put("user_id", userId);
+        claims.put("roles", defaultRole);
         return jwtService.generateToken(userId, claims);
     }
 }
