@@ -1,13 +1,8 @@
--- =========================================
--- Database
--- =========================================
-CREATE
-DATABASE IF NOT EXISTS auth_service_db
-  CHARACTER SET utf8mb4
-  COLLATE utf8mb4_unicode_ci;
-
-USE
-auth_service_db;
+-- ================================================
+-- AUTH SERVICE SCHEMA (MySQL adjusted with safety checks)
+-- ================================================
+CREATE DATABASE IF NOT EXISTS auth_service;
+USE auth_service;
 
 -- =========================================
 -- Tabla principal: user_credentials
@@ -144,8 +139,7 @@ CREATE TABLE IF NOT EXISTS user_credentials_audit
 -- =========================================
 -- Triggers de auditoría
 -- =========================================
-DELIMITER
-$$
+DELIMITER $$
 
 -- Insert: inicializa version = 1
 CREATE TRIGGER trg_user_credentials_ai

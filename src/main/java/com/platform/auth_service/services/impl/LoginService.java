@@ -102,7 +102,7 @@ public class LoginService implements ILoginService {
 
     private Map<String, String> buildClaims(UserDto userDto) {
         Map<String, String> claims = new ConcurrentHashMap<>();
-        claims.put("userId", userDto.getUserId().toString());
+        claims.put("user_id", userDto.getUserId().toString());
         claims.put("roles", userDto.getRoles().toString());
         return claims;
     }
